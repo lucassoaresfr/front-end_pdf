@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imprimir Produtos</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <button id="btnPrint">Imprimir</button>
+    
+    <div id="select-table-container">
+        <label for="selectTable" id="select-table-label">Escolha a Tabela:</label>
+        <select name="selectTable" id="selectTable">
+            <option value="">Selecione</option>
+            <option value="produtos">Produtos</option>
+            <!-- Aqui você pode adicionar mais opções se houver outras tabelas -->
+        </select>
+    </div>
+    
+
+    <div id="div_table">
+        <!-- A tabela será gerada dinamicamente aqui -->
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

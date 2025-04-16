@@ -1,0 +1,198 @@
+/* Centralizar o conteúdo no topo da página */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 3px;
+    text-align: left;
+    font-size: 12px;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+h2 {
+    background-color: #4CAF50;
+    color: #ffffff;
+    padding: 10px;
+}
+/* Estilos para o container do botão e do select */
+#select-table-container,
+#btnPrint {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos para o botão de imprimir */
+#btnPrint {
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#btnPrint:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+#btnPrint:active {
+    background-color: #388e3c;
+    transform: translateY(0);
+}
+
+/* Estilos para o container do formulário */
+#select-table-container {
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Estilo do label */
+#select-table-label {
+    margin: 6px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #555;
+    display: block;
+}
+
+/* Estilo do select */
+#selectTable {
+    padding: 12px 18px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    width: 250px;
+}
+
+/* Estilo do select ao passar o mouse */
+#selectTable:hover {
+    border-color: #4CAF50;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo do select ao focar (quando o campo está ativo) */
+#selectTable:focus {
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Estilo para a opção selecionada */
+#selectTable option {
+    padding: 10px;
+}
+
+.pagina{
+    margin: 10px;
+}
+#td_rca {
+    width: 170px
+}
+
+/* Estilos para impressão */
+@media print {
+    /* Remover centralização do body */
+    body {
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Ocultar tudo na página */
+    body * {
+        display: none;
+    }
+
+    /* Exibir apenas a div que contém a tabela */
+    #div_table {
+        display: block;
+        width: 100%; /* Garantir que a tabela ocupe toda a largura disponível */
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+    }
+
+    /* Restaurar o display para os elementos dentro da tabela */
+    #div_table * {
+        display: revert;
+    }
+
+    .department-header {
+        page-break-before: always; /* Garante que o cabeçalho do departamento apareça no início da página */
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+
+    }
+    
+    /* Adicionar quebras de página para as seções e departamentos */
+    .department-title, .section-title {
+        page-break-before: always;
+        margin-top: 50px;
+    }
+
+    .department-title h1, .section-title h2 {
+        margin: 0;
+        padding: 5px;
+    }
+
+    /* Certificar que a div da tabela tem uma quebra de página antes */
+    #div_table {
+        page-break-before: always;
+    }
+
+    /* Especificar que o botão e o select não devem ser exibidos na impressão */
+    #select-table-container,
+    #btnPrint {
+        display: none;
+    }
+
+    table {
+        width: 96%; /* Garantir largura total na impressão */
+        border-collapse: collapse;
+        margin-bottom: 3px;
+        margin-top: 3px;
+    }
+
+    th, td {
+        border: 1px solid #ccc;
+        padding: 3px;
+        text-align: left;
+        font-size: 10px; /* Fonte menor para melhor ajuste */
+        word-wrap: break-word; /* Quebrar texto longo */
+    }
+
+    th {
+        background-color: #f4f4f4;
+    }
+}
