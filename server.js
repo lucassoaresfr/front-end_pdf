@@ -3,8 +3,17 @@ const path = require('path');
 const app = express();
 require('dotenv').config();
 const port = process.env.PORT;
+const cors = require('cors');
+
+app.use(express.json());
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type'],
+}));
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/img', express.static(path.join(__dirname, 'img')));
 
 app.get('/html_pdf', async (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'produtos.html'));
@@ -19,8 +28,7 @@ app.get('/apiUrl', (req, res) => {
     res.json({ API_URL: apiUrl });
 });
 
-app.listen(port, () => {
-    console.log('✅ Servidor rodando');
-}).on('error', (err) => {
-    console.error('❌ Erro ao iniciar o servidor', err.message);
-});
+app.listen(port, '0.0.0.0', () => {
+    console.log('Servidor rodando');
+  });
+  

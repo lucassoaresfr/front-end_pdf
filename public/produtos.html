@@ -53,39 +53,42 @@
         <!-- A tabela será gerada dinamicamente aqui -->
     </div>
     <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            // Função para carregar a URL da API
-            async function loadAPIUrl() {
-                try {
-                    const response = await fetch("http://localhost:3545/apiUrl");
-                    const data = await response.json();
-                    return data.API_URL;
-                } catch (error) {
-                    console.error('Erro ao carregar a URL da API:', error);
-                    return null;
-                }
+      document.addEventListener('DOMContentLoaded', async () => {
+
+            function getAPIUrl() {
+                return 'http://api-oracle:3040/produtos';
             }
 
-            // Função para buscar os produtos
+            // Esta função busca os produtos com timeout e renderiza
             async function fetchProducts() {
-                const API_URL = await loadAPIUrl(); 
+                const API_URL = getAPIUrl();
 
                 if (!API_URL) {
                     console.error("Não foi possível carregar a URL da API");
                     return;
                 }
 
+                const TIMEOUT = 30000;
+
                 try {
-                    const response = await fetch(API_URL);
+                    const response = await Promise.race([
+                        fetch(API_URL),
+                        new Promise((_, reject) =>
+                            setTimeout(() => reject(new Error('Tempo de espera excedido')), TIMEOUT)
+                        )
+                    ]);
+
                     if (!response.ok) {
                         throw new Error('Erro ao buscar produtos');
                     }
+
                     const produtos = await response.json();
-                    renderProdutos(produtos);
+                    renderProdutos(produtos); // Renderização correta dos produtos
                 } catch (error) {
-                    console.error('Erro ao buscar os produtos:', error);
+                    console.error('Erro ao buscar os produtos:', error.message);
                 }
             }
+
 
             function renderProdutos(produtos) {
                 const divTable = document.getElementById('div_table');
@@ -123,7 +126,7 @@
                         thead.innerHTML = `
                             <tr>
                                 <th colspan="4" class="header-cell">
-                                    <img src="../img/1logo.bmp" alt="Imagem do Departamento: ${depto}" width="100" height="50">
+                                    <img src="http://frontend-pdf:3042/img/1logo.bmp" alt="Imagem do Departamento: ${depto}" width="100" height="50">
                                     <h2>Departamento: ${depto}</h2>
                                     <h3>Seção: ${secao}</h3>
                                 </th>

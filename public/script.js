@@ -1,6 +1,6 @@
 async function loadAPIUrl() {
     try {
-        const response = await fetch("http://localhost:3545/apiUrl");
+        const response = await fetch("http://localhost:3040/produtos");
         const data = await response.json();
         return data.API_URL; 
     } catch (error) {
