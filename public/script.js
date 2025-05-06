@@ -1,6 +1,6 @@
 async function loadAPIUrl() {
     try {
-        const response = await fetch("http://localhost:3040/produtos");
+        const response = await fetch("http://frontend-pdf:3042/apiUrl");
         const data = await response.json();
         return data.API_URL; 
     } catch (error) {
@@ -72,7 +72,7 @@ function renderProdutos(produtos) {
             thead.innerHTML = `
                 <tr>
                     <th colspan="4" class="header-cell">
-                        <img src="/img/1logo.bmp" alt="Imagem do Departamento: ${depto}" width="100" height="50">
+                        <img src="http://frontend-pdf:3042/img/1logo.bmp" alt="Imagem do Departamento: ${depto}" width="100" height="50">
                         <h2>Departamento: ${depto}</h2>
                         <h3>Seção: ${secao}</h3>
                     </th>

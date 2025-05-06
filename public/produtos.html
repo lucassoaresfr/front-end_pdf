@@ -55,9 +55,19 @@
     <script>
       document.addEventListener('DOMContentLoaded', async () => {
 
-            function getAPIUrl() {
-                return 'http://api-oracle:3040/produtos';
+            async function getAPIUrl() {
+            try {
+                const response = await fetch('http://frontend-pdf:3042/apiUrl');
+                if (!response.ok) {
+                    throw new Error(`Erro HTTP: ${response.status}`);
+                }
+                const data = await response.json();
+                return data.API_URL;
+            } catch (error) {
+                console.error('Erro ao buscar a API_URL:', error);
+                return null;
             }
+        }
 
             // Esta função busca os produtos com timeout e renderiza
             async function fetchProducts() {
