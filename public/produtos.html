@@ -71,7 +71,7 @@
 
             // Esta função busca os produtos com timeout e renderiza
             async function fetchProducts() {
-                const API_URL = getAPIUrl();
+                const API_URL = await getAPIUrl();
 
                 if (!API_URL) {
                     console.error("Não foi possível carregar a URL da API");
