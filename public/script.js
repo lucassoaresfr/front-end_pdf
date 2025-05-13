@@ -72,7 +72,7 @@ function renderProdutos(produtos) {
             thead.innerHTML = `
                 <tr>
                     <th colspan="4" class="header-cell">
-                        <img src="http://frontend-pdf:3042/img/1logo.bmp" alt="Imagem do Departamento: ${depto}" width="100" height="50">
+                        <img src="http://frontend-pdf:7005/img/1logo.bmp" alt="Imagem do Departamento: ${depto}" width="100" height="50">
                         <h2>Departamento: ${depto}</h2>
                         <h3>Seção: ${secao}</h3>
                     </th>
