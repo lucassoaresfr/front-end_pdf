@@ -1,6 +1,6 @@
 async function loadAPIUrl() {
     try {
-        const response = await fetch("http://frontend-pdf:3042/apiUrl");
+        const response = await fetch("http://frontend-pdf:7005/apiUrl");
         const data = await response.json();
         return data.API_URL; 
     } catch (error) {
