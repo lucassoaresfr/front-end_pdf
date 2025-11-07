@@ -90,6 +90,7 @@
         async function getAPIUrl() {
           try {
             const response = await fetch("http://frontend-pdf:7005/apiUrl");
+            //const response = await fetch("http://localhost:3041/apiUrl");
             if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
             const data = await response.json();
             return data.API_URL;
@@ -195,7 +196,7 @@
             <tr>
               <th colspan="4" class="header-cell">
             <div class="header-content" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                <img id="logo" src="http://frontend-pdf:7005/img/1logo.bmp" alt="Imagem do Departamento: ${depto}" width="40" height="20">
+                 <img id="logo" src="http://frontend-pdf:7005/img/1logo.bmp" alt="Imagem do Departamento: ${depto}" width="40" height="20">
                 <h2 id="date">Data de emissão: ${dateformat}</h2>
             </div>
                 <h1 class="header-title">TABELA DE PRODUTOS</h1>
